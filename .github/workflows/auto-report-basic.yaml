@@ -50,7 +50,7 @@ jobs:
         body: >
           Automated model run
         labels: report, automated pr
-        
-    if: github.actor == 'github-actions[bot]'
-    steps:
-      - uses: hmarr/auto-approve-action@v4
+    
+    - name: Auto-approve the PR    
+      if: github.actor == 'github-actions[bot]'
+      uses: hmarr/auto-approve-action@v4
