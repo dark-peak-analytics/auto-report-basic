@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: '1 1 1 * *'
 
-name: Run Sick-Sicker model & generate report
+name: Full workflow
 jobs:
   createPullRequest:
     runs-on: windows-2019
@@ -13,16 +13,16 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
   # Load repo and install R
     steps:
-    - uses: actions/checkout@v4
-    - uses: r-lib/actions/setup-r@v2
+    - uses: actions/checkout@v4 # takes a clone of the repository onto the VM
+    - uses: r-lib/actions/setup-r@v2 # sets up R
     
     - name: Setup pandoc
-      uses: r-lib/actions/setup-pandoc@v2
+      uses: r-lib/actions/setup-pandoc@v2 # sets up pandoc (for Markdown)
       with:
         pandoc-version: '2.17.1.1'
     
     - name: Install TinyTeX
-      uses: r-lib/actions/setup-tinytex@v2
+      uses: r-lib/actions/setup-tinytex@v2 # sets up tinytex (for LaTeX PDFs)
       env:
           # install full prebuilt version
           TINYTEX_INSTALLER: TinyTeX
@@ -41,7 +41,7 @@ jobs:
       shell: Rscript {0} 
 
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v7
+      uses: peter-evans/create-pull-request@v7 # creates a pull request
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: auto-report-update

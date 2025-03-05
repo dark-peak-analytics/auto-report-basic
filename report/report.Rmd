@@ -3,7 +3,7 @@ title: "Report"
 subtitle: "`r format(Sys.Date(), '%d %b %Y')`"
 output: pdf_document
 params:
-  ICER: 50000  # Default value for the ICER parameter
+  ICER: NULL  # Default value for the ICER parameter
 ---
 
 The Incremental Cost-effectiveness Ratio (ICER) is: `r scales::dollar_format(prefix = "£")(params$ICER)`
