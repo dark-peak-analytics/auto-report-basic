@@ -44,12 +44,10 @@ jobs:
       uses: peter-evans/create-pull-request@v7
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        branch: auto-report-update
+        reviewers: RobertASmith
         commit-message: Automated Model Run & Report Generation
         title: 'Automated Model Run'
         body: >
-          Automated model run
+          Updated report generated.
         labels: report, automated pr
-    
-    - name: Auto-approve the PR    
-      if: contains(github.event.pull_request.title, 'Automated')
-      uses: hmarr/auto-approve-action@v4
