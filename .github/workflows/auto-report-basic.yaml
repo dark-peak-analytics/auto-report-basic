@@ -29,15 +29,11 @@ jobs:
 
     - name: Install dependencies
       run: |
-          install.packages(
-          c("reshape2", "jsonlite", "httr", "readr", "rmarkdown", "markdown")
-          )
-          install.packages(
-          "scales", dependencies = TRUE, repos = 'http://cran.rstudio.com/' 
-          )
-          install.packages(
-          "ggplot2", dependencies = TRUE, repos = 'http://cran.rstudio.com/'
-          )
+          install.packages(c("reshape2", "jsonlite", "httr", "readr", 
+                             "rmarkdown", "markdown", "scales", "ggplot2"), 
+                           dependencies = TRUE, 
+                           repos = 'http://cran.rstudio.com/'
+                          )
       shell: Rscript {0} 
 
     - name: Run analysis & generate report
@@ -54,3 +50,7 @@ jobs:
         body: >
           Automated model run
         labels: report, automated pr
+        
+    if: github.actor == 'github-actions[bot]'
+    steps:
+      - uses: hmarr/auto-approve-action@v4
