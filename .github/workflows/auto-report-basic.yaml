@@ -10,7 +10,7 @@ jobs:
   createPullRequest:
     runs-on: windows-2019
     env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }} # done in the background.
   # Load repo and install R
     steps:
     - uses: actions/checkout@v4 # takes a clone of the repository onto the VM
