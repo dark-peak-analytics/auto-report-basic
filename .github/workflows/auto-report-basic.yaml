@@ -13,8 +13,8 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
   # Load repo and install R
     steps:
-    - uses: actions/checkout@master
-    - uses: r-lib/actions/setup-r@master
+    - uses: actions/checkout@main
+    - uses: r-lib/actions/setup-r@main
     
     - name: Setup pandoc
       uses: r-lib/actions/setup-pandoc@v2
