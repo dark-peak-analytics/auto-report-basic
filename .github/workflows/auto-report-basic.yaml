@@ -29,8 +29,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-          install.packages(c("reshape2", "jsonlite", "httr", "readr", 
-                             "rmarkdown", "markdown", "scales", "ggplot2"), 
+          install.packages(c("rmarkdown", "markdown", "scales"), 
                            dependencies = TRUE, 
                            repos = 'http://cran.rstudio.com/'
                           )
@@ -52,5 +51,5 @@ jobs:
         labels: report, automated pr
     
     - name: Auto-approve the PR    
-      if: github.actor == 'github-actions[bot]'
+      if: contains(github.event.pull_request.title, 'Automated')
       uses: hmarr/auto-approve-action@v4
